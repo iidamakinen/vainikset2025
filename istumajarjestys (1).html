@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Istumajärjestys</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tervetuloa juhlaan!</h1>
+    <p>Syötä nimesi nähdäksesi pöytänumerosi:</p>
+    <input type="text" id="nameInput" placeholder="Etunimi Sukunimi">
+    <button onclick="searchTable()">Hae</button>
+    <div id="result"></div>
+
+    <script>
+        const lookup = {"nurminen mikko": ["Nurminen Mikko", 1], "nurminen raisa": ["Nurminen Raisa", 1], "salmi jesse": ["Salmi Jesse", 1], "vainionpää hilma": ["Vainionpää Hilma", 1], "vainionpää jenna": ["Vainionpää Jenna", 1], "vainionpää matias": ["Vainionpää Matias", 1], "vainionpää matti": ["Vainionpää Matti", 1], "vainionpää niko": ["Vainionpää Niko", 1], "vainionpää oksana": ["Vainionpää Oksana", 1], "vainionpää väinö": ["Vainionpää Väinö", 1], "häyhä pirjo": ["Häyhä Pirjo", 2], "kallionsivu leena": ["Kallionsivu Leena", 2], "kippo aki": ["Kippo Aki", 2], "koivumäki janita": ["Koivumäki Janita", 2], "koivumäki jouni": ["Koivumäki Jouni", 2], "mäkinen eija": ["Mäkinen Eija", 2], "mäkinen timo": ["Mäkinen Timo", 2], "pohjaranta jarmo": ["Pohjaranta Jarmo", 2], "pohjaranta kaija": ["Pohjaranta Kaija", 2], "salovaara marika": ["Salovaara Marika", 2], "salovaara petra": ["Salovaara Petra", 2], "hakanen anne": ["Hakanen Anne", 3], "hakanen eeli": ["Hakanen Eeli", 3], "hakanen niilo": ["Hakanen Niilo", 3], "hakanen tuomo": ["Hakanen Tuomo", 3], "mäkinen lasse": ["Mäkinen Lasse", 3], "ruoranen iida": ["Ruoranen Iida", 3], "ruoranen kasper": ["Ruoranen Kasper", 3], "ruoranen saaga": ["Ruoranen Saaga", 3], "eskonniemi ville": ["Eskonniemi Ville", 4], "hart amanda": ["Hart Amanda", 4], "jokimäki jenna": ["Jokimäki Jenna", 4], "krook ilari": ["Krook Ilari", 4], "laiho antton": ["Laiho Antton", 4], "lammi jesperi": ["Lammi Jesperi", 4], "naingkom david": ["Naingkom David", 4], "nieminen joakim": ["Nieminen Joakim", 4], "puputti kai": ["Puputti Kai", 4], "salo iida": ["Salo Iida", 4], "tuovinen benjamin": ["Tuovinen Benjamin", 4], "tuovinen sofia": ["Tuovinen Sofia", 4], "elo roope": ["Elo Roope", 5], "eriksson reko": ["Eriksson Reko", 5], "haunia venla": ["Haunia Venla", 5], "joutsenlahti miro": ["Joutsenlahti Miro", 5], "kivikoski maria": ["Kivikoski Maria", 5], "laukkanen aino-elina": ["Laukkanen Aino-elina", 5], "malmivuori laura": ["Malmivuori Laura", 5], "niiniaho eeva-roosa": ["Niiniaho Eeva-roosa", 5], "pikkumaa sanna": ["Pikkumaa Sanna", 5], "saari vanessa": ["Saari Vanessa", 5], "salomaa piia": ["Salomaa Piia", 5], "tuunanen katri": ["Tuunanen Katri", 5], "soili sonja": ["Soili Sonja", 5], "björn anna-leena": ["Björn Anna-leena", 7], "heiskanen meeri": ["Heiskanen Meeri", 7], "jylhä juuso": ["Jylhä Juuso", 7], "järvelä sanna-liisa": ["Järvelä Sanna-liisa", 7], "lehikoinen tuukka": ["Lehikoinen Tuukka", 7], "multisilta joonas": ["Multisilta Joonas", 7], "riihimäki otto": ["Riihimäki Otto", 7], "sundelin antti": ["Sundelin Antti", 7], "tiinus ringa": ["Tiinus Ringa", 7], "virjala sanna": ["Virjala Sanna", 7], "virtalaine anttoni": ["Virtalaine Anttoni", 7], "väinölä aleksi": ["Väinölä Aleksi", 7], "heikkilä santeri": ["Heikkilä Santeri", 8], "huunamaa joakim": ["Huunamaa Joakim", 8], "kaarto sofia": ["Kaarto Sofia", 8], "kainu pinja": ["Kainu Pinja", 8], "kallio juho": ["Kallio Juho", 8], "ketola joakim": ["Ketola Joakim", 8], "koivisto jenni": ["Koivisto Jenni", 8], "lindqvist sakari": ["Lindqvist Sakari", 8], "mäkelä topias": ["Mäkelä Topias", 8], "tuurala nelli": ["Tuurala Nelli", 8], "walli jenni": ["Walli Jenni", 8], "warell roope": ["Warell Roope", 8]};
+
+        function searchTable() {
+            const input = document.getElementById('nameInput').value.trim().toLowerCase();
+            const resultDiv = document.getElementById('result');
+            if (lookup[input]) {
+                const formattedName = lookup[input][0];
+                const table = lookup[input][1];
+                resultDiv.innerHTML = `Hei <strong>${formattedName}</strong>, istut <strong>pöydässä ${table}</strong>.`;
+            } else {
+                resultDiv.innerHTML = "Nimeä ei löytynyt. Tarkista kirjoitusasu.";
+            }
+        }
+    </script>
+</body>
+</html>
