@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Missä istun?</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f0f8;
+            text-align: center;
+            padding: 50px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Missä istun?</h1>
+    <p>Syötä nimesi nähdäksesi pöytänumerosi:</p>
+    <input type="text" id="nameInput" placeholder="Esim. Mäkinen Iida">
+    <br>
+    <button onclick="findTable()">Hae pöytäpaikka</button>
+    <div id="result"></div>
+
+    <script>
+        const guestList = {
+            "Mäkinen Iida": 1,
+            "Vainionpää Tommi": 1,
+            "Mäkinen Eija": 1,
+            "Mäkinen Timo": 1,
+            "Häyhä Pirjo": 1
+        };
+
+        function findTable() {
+            const name = document.getElementById("nameInput").value.trim();
+            const resultDiv = document.getElementById("result");
+            if (guestList[name]) {
+                resultDiv.innerHTML = `Hei <strong>${name}</strong>, istut <strong>pöydässä ${guestList[name]}</strong>. Tervetuloa juhlaan! 💐`;
+            } else {
+                resultDiv.innerHTML = `Nimeä <strong>${name}</strong> ei löytynyt listalta. Tarkista kirjoitusasu.`;
+            }
+        }
+    </script>
+</body>
+</html>
